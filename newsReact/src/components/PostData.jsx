@@ -1,28 +1,21 @@
 import React from "react"
+import Comments from "./Comments.jsx";
 
 const PostData = (props) => {
     return (
         <div className="post">
-            <div className="title">
+            <h3 className="title">
                 {props.postData['title']}
-            </div>
+            </h3>
             <div className="body">
                 {props.postData['body']}
             </div>
 
             <hr />
 
-            <div>
-                <div>
-                    <button data-id={props.postData['id']} onClick={props.addFavorite}>favorite</button>
-                </div>
-                <div>
-                    <strong>{props.commentData['name']}</strong>
-                </div>
-                <div>
-                    {props.commentData['body']}
-                </div>
-            </div>
+            <Comments
+                commentData={props.commentData}
+                />
         </div>
     )
 }
