@@ -15,9 +15,10 @@ function App(props) {
 
     useEffect(() => {
         const postId = 1
+        const post = postList.find(p => p.id == postId)
         const postComments = commentList.filter(c => {return c.postId == postId})
 
-        setPostData(postList[postId])
+        setPostData(post)
         setCommentData(postComments)
     }, []);
 
