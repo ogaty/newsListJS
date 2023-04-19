@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react'
 
-import PostData from "./components/PostData.jsx";
-import PostList from "./components/PostList.jsx";
-import FavoriteList from "./components/FavoriteList.jsx";
+import PostData from "@/components/PostData.jsx";
+import PostList from "@/components/PostList.jsx";
+import FavoriteList from "@/components/FavoriteList.jsx";
 
 /**
  * App

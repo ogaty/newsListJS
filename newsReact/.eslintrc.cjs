@@ -18,6 +18,7 @@ module.exports = {
     ],
     "rules": {
     },
+    "ignorePatterns": ["**/*.test.js", "**/vendor/*.js"],
     "settings": {
         "react": {
             "version": "detect"

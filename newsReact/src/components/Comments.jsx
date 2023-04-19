@@ -18,7 +18,7 @@ const Comments = (props) => {
                 props.commentData.map(c => (
                         <div key={c['id']}>
                             <div>
-                                <h4>{c['name']}</h4>
+                                <h4 role="comment-title">{c['name']}</h4>
                             </div>
                             <div>
                                 {c['body']}
