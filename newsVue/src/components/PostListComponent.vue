@@ -1,9 +1,16 @@
 <script setup>
-import { defineEmits } from 'vue'
 
+/**
+ * props
+ * @type {Readonly<{[key in string]?: any}>}
+ */
 const props = defineProps([
     'postList'
 ])
+/**
+ * emit
+ * @type {EmitFn<string[]>}
+ */
 const emit = defineEmits(
     ['handleClick']
 )
@@ -15,7 +22,7 @@ const emit = defineEmits(
             <input type="text" placeholder="search" onChange="handleChange" />
         </div>
         <ul>
-            <li v-for="post in props.postList">
+            <li v-for="post in props.postList" v-bind:key="post.id" class="post-data">
                 <span @click="emit('handleClick', post)">{{ post.title }}</span>
             </li>
         </ul>

@@ -1,11 +1,20 @@
 <script setup>
-import { ref } from 'vue'
 
+import CommentComponent from "./CommentComponent.vue";
+
+/**
+ * props
+ * @type {Readonly<{[key in string]?: any}>}
+ */
 const props = defineProps([
     'postData',
     'commentData',
 ])
 
+/**
+ * emit
+ * @type {EmitFn<string[]>}
+ */
 const emit = defineEmits([
     'addFavorite'
 ])
@@ -27,13 +36,8 @@ const emit = defineEmits([
             <div>
                 <button v-bind:data-id="props.postData.id" @click="emit('addFavorite', props.postData.id)">favorite</button>
             </div>
-            <div v-for="comment in props.commentData">
-                <div>
-                    <strong>{{ comment.name }}</strong>
-                </div>
-                <div>
-                    {{ comment.body }}
-                </div>
+            <div v-for="comment in props.commentData" v-bind:key="comment.id" class="comment-data">
+                <CommentComponent :comment="comment" />
             </div>
         </div>
     </div>

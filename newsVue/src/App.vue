@@ -1,5 +1,5 @@
 <script setup>
-import {ref, reactive, toRefs} from 'vue'
+import {ref} from 'vue'
 
 import Comments from "./data/Comments.js";
 import Posts from "./data/Posts.js";
@@ -17,6 +17,10 @@ let CommentData = ref(commentList.filter(c => {return c.postId == 1}));
 let favorite = ref([]);
 let listType = ref(0);
 
+/**
+ * クリックハンドラ
+ * @param {Object} post
+ */
 const handleClick = (post) => {
     const postId = post.id
     const comments = commentList.filter(c => {return c.postId == postId})
@@ -28,12 +32,19 @@ const handleClick = (post) => {
     CommentData.value = comments
 }
 
+/**
+ * お気に入り追加
+ * @param {int} id
+ */
 const addFavorite = (id) => {
     favorite.value.push(id)
     favoriteList.value = postList.filter(post => {return favorite.value.includes(post['id'])})
 }
 
-const changeType = (event) => {
+/**
+ * 表示タイプ変更
+ */
+const changeType = () => {
     listType.value = listType.value == 0 ? 1 : 0
 }
 </script>
