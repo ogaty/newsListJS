@@ -13,20 +13,19 @@ const postList = Posts;
 const favoriteList = ref({});
 
 let PostData = ref(postList[0]);
-let CommentData = ref(commentList[0]);
+let CommentData = ref(commentList.filter(c => {return c.postId == 1}));
 let favorite = ref([]);
 let listType = ref(0);
 
 const handleClick = (post) => {
     const postId = post.id
-    const commentIndex = commentList.findIndex(c => {return c.postId == postId})
-    const commentId = commentList[commentIndex]['id']
+    const comments = commentList.filter(c => {return c.postId == postId})
 //        console.log("postId = %d, commentId = %d", postId, commentId)
 //        console.log(event.target.dataset["id"])
 //        console.log(event.target.getAttribute("data-id"))
 
     PostData.value = postList[postId]
-    CommentData.value = commentList[commentId]
+    CommentData.value = comments
 }
 
 const addFavorite = (id) => {

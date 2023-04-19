@@ -10,7 +10,6 @@ const emit = defineEmits([
     'addFavorite'
 ])
 
-console.log(props.postData)
 </script>
 
 <template>
@@ -28,11 +27,13 @@ console.log(props.postData)
             <div>
                 <button v-bind:data-id="props.postData.id" @click="emit('addFavorite', props.postData.id)">favorite</button>
             </div>
-            <div>
-                <strong>{{ props.commentData.name }}</strong>
-            </div>
-            <div>
-                {{ props.commentData.body }}
+            <div v-for="comment in props.commentData">
+                <div>
+                    <strong>{{ comment.name }}</strong>
+                </div>
+                <div>
+                    {{ comment.body }}
+                </div>
             </div>
         </div>
     </div>
