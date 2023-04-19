@@ -1,5 +1,13 @@
 import React from "react"
+import PropTypes from "prop-types";
 
+/**
+ * comments
+ *
+ * @param {Object} props
+ * @param {array} props.commentData コメント一覧
+ * @returns {JSX.Element}
+ */
 const Comments = (props) => {
     return (
         <details>
@@ -21,6 +29,10 @@ const Comments = (props) => {
             }
         </details>
     )
+}
+
+Comments.propTypes = {
+    commentData: PropTypes.array
 }
 
 export default Comments

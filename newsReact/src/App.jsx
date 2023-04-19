@@ -4,6 +4,12 @@ import PostData from "./components/PostData.jsx";
 import PostList from "./components/PostList.jsx";
 import FavoriteList from "./components/FavoriteList.jsx";
 
+/**
+ * App
+ * @param {Object} props props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function App(props) {
     const videoRef = useRef()
     const commentList = props.comments;
@@ -13,6 +19,9 @@ function App(props) {
     const [favorite, setFavorite] = useState([])
     const [listType, setListType] = useState(0)
 
+    /**
+     * 初期化
+     */
     useEffect(() => {
         const postId = 1
         const post = postList.find(p => p.id == postId)
@@ -22,6 +31,10 @@ function App(props) {
         setCommentData(postComments)
     }, []);
 
+    /**
+     * 投稿データ更新
+     * @param {Object} event 発火イベント
+     */
     const updatePostData = (event) => {
         const postId = event.target.dataset["id"]
         const post = postList.find(p => p.id == postId)
@@ -35,15 +48,27 @@ function App(props) {
         setCommentData(postComments)
     }
 
+    /**
+     * お気に入り追加
+     * @param {Object} event 発火イベント
+     */
     const addFavorite = (event) => {
         setFavorite([...favorite, parseInt(event.target.dataset['id'])])
     }
 
+    /**
+     * リストコンポーネント
+     * @type {JSX.Element[]}
+     */
     const listDefinition = [
         <PostList postList={postList} handleClick={updatePostData} />,
         <FavoriteList favorite={postList.filter(post => {return favorite.includes(post['id'])})} />
     ]
 
+    /**
+     * リスト切り替え
+     * @param {Object} event 発火イベント
+     */
     const changeType = (event) => {
         setListType(listType === 0 ? 1 : 0)
     }

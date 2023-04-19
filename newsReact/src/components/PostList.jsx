@@ -1,9 +1,21 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
+/**
+ * 投稿リスト
+ * @param {Object} props
+ * @param {array} props.postList 投稿一覧
+ * @param {function} props.handleCallback クリック時のコールバック関数
+ * @returns {JSX.Element}
+ */
 const PostList = (props) => {
 
     const [searchText, setSearchText] = useState("")
 
+    /**
+     * 検索テキストアップデート
+     * @param {Object} event
+     */
     const handleChange = (event) => {
 //        console.log(event.target.value)
 
@@ -25,6 +37,11 @@ const PostList = (props) => {
             </ul>
         </>
     )
+}
+
+PostList.propTypes = {
+    postList: PropTypes.array,
+    handleClick: PropTypes.func
 }
 
 export default PostList
