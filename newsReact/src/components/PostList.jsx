@@ -40,8 +40,8 @@ const PostList = (props) => {
 }
 
 PostList.propTypes = {
-    postList: PropTypes.array,
-    handleClick: PropTypes.func
+    postList: PropTypes.array.isRequired,
+    handleClick: PropTypes.func.isRequired
 }
 
 export default PostList

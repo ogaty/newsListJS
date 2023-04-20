@@ -14,7 +14,8 @@ const PostData = (props) => {
     return (
         <div className="post">
             <h3 className="title" role="title">
-                {props.postData['title']}
+                {props.postData['title']}<br/>
+                <button onClick={props.addFavorite} data-id={props.postData['id']}>Favorite</button>
             </h3>
             <div className="body">
                 {props.postData['body']}
@@ -30,8 +31,9 @@ const PostData = (props) => {
 }
 
 PostData.propTypes = {
-    postData: PropTypes.object,
-    commentData: PropTypes.array
+    postData: PropTypes.object.isRequired,
+    commentData: PropTypes.array,
+    addFavorite: PropTypes.func.isRequired
 }
 
 export default PostData

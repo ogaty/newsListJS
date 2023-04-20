@@ -36,8 +36,8 @@ const FavoriteList = (props) => {
 }
 
 FavoriteList.propTypes = {
-    favorite: PropTypes.array,
-    handleClick: PropTypes.func
+    favorite: PropTypes.array.isRequired,
+    handleClick: PropTypes.func.isRequired
 }
 
 export default FavoriteList

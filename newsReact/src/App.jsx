@@ -1,17 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
 import PostData from "@/components/PostData.jsx";
 import PostList from "@/components/PostList.jsx";
 import FavoriteList from "@/components/FavoriteList.jsx";
+import PropTypes from "prop-types";
 
 /**
  * App
  * @param {Object} props props
+ @param {array} props.posts
+ * @param {array} props.comments
  * @returns {JSX.Element}
  * @constructor
  */
 function App(props) {
-    const videoRef = useRef()
     const commentList = props.comments;
     const postList = props.posts;
     const [postData, setPostData] = useState(postList[0])
@@ -61,15 +63,15 @@ function App(props) {
      * @type {JSX.Element[]}
      */
     const listDefinition = [
-        <PostList postList={postList} handleClick={updatePostData} />,
-        <FavoriteList favorite={postList.filter(post => {return favorite.includes(post['id'])})} />
+        <PostList key={0} postList={postList} handleClick={updatePostData} />,
+        <FavoriteList key={1} favorite={postList.filter(post => {return favorite.includes(post['id'])})} handleClick={updatePostData} />
     ]
 
     /**
      * リスト切り替え
      * @param {Object} event 発火イベント
      */
-    const changeType = (event) => {
+    const changeType = () => {
         setListType(listType === 0 ? 1 : 0)
     }
 
@@ -77,6 +79,9 @@ function App(props) {
     return (
         <div className="wrap">
             <div className="left">
+                <div>
+                    <input type="checkbox" onClick={changeType} />Favorite
+                </div>
                 {listDefinition[listType]}
             </div>
             <div className="right">
@@ -88,6 +93,11 @@ function App(props) {
             </div>
         </div>
     )
+}
+
+App.propTypes = {
+    'posts': PropTypes.array.isRequired,
+    'comments': PropTypes.array.isRequired,
 }
 
 export default App

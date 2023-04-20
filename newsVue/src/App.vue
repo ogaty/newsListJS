@@ -56,17 +56,17 @@ const changeType = () => {
                 <input type="checkbox" @click="changeType" />
             </div>
             <div v-if="listType == 0">
-                <PostListComponent :postList=postList @handleClick=handleClick />
+                <PostListComponent :post-list=postList @handle-click=handleClick />
             </div>
             <div v-else>
-                <FavoriteListComponent :postList=favoriteList />
+                <FavoriteListComponent :post-list=favoriteList />
             </div>
         </div>
         <div class="right">
             <PostDataComponent
-                :postData=PostData
-                :commentData=CommentData
-                @addFavorite=addFavorite
+                :post-data=PostData
+                :comment-data=CommentData
+                @add-favorite=addFavorite
             />
         </div>
     </div>
